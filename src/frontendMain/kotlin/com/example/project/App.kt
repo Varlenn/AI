@@ -16,6 +16,7 @@ import io.kvision.utils.px
 import kotlinx.browser.window
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.asCoroutineDispatcher
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
@@ -41,7 +42,6 @@ class App : Application() {
             }.bind(displayText) {
                 content = it
             }
-
         }
         AppScope.launch {
             val pingResult = Model.ping("Hello world from client!")
