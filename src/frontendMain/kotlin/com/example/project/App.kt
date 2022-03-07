@@ -8,6 +8,7 @@ import io.kvision.core.TextAlign
 import io.kvision.html.Span
 import io.kvision.html.label
 import io.kvision.panel.root
+import io.kvision.state.bind
 import io.kvision.utils.auto
 import io.kvision.utils.perc
 import io.kvision.utils.pt
@@ -35,13 +36,10 @@ class App : Application() {
                 paddingTop = 100.px
                 alignContent = AlignContent.CENTER
                 textAlign = TextAlign.CENTER
-                AppScope.launch {
-                    displayText.collect {
-                        content = it
-                    }
-                }
                 fontSize = 20.pt
                 fontWeight = FontWeight.BOLD
+            }.bind(displayText) {
+                content = it
             }
 
         }
