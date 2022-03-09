@@ -22,7 +22,8 @@ val kotlinVersion: String by System.getProperties()
 val kvisionVersion: String by System.getProperties()
 val ktorVersion: String by project
 val logbackVersion: String by project
-val exposeVersion: String by project
+val exposedVersion: String by project
+val koin_version: String by project
 
 val webDir = file("src/frontendMain/web")
 val mainClassName = "io.ktor.server.netty.EngineMain"
@@ -82,10 +83,12 @@ kotlin {
                 implementation("io.ktor:ktor-server-netty:$ktorVersion")
                 implementation("io.ktor:ktor-auth:$ktorVersion")
                 implementation("ch.qos.logback:logback-classic:$logbackVersion")
-                implementation("org.jetbrains.exposed:exposed-core:$exposeVersion")
-                runtimeOnly("org.jetbrains.exposed:exposed-jdbc:$exposeVersion")
-                implementation("org.jetbrains.exposed:exposed-dao:$exposeVersion")
+                implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
+                runtimeOnly("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
+                implementation("org.jetbrains.exposed:exposed-dao:$exposedVersion")
                 implementation("org.postgresql:postgresql:42.3.3")
+                implementation("io.insert-koin:koin-ktor:$koin_version")
+                implementation("io.insert-koin:koin-logger-slf4j:$koin_version")
             }
         }
         val backendTest by getting {
